@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.asuka</groupId>
+        <artifactId>asuka</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../asuka/pom.xml</relativePath>
+    </parent>
+
+    <!-- 子工程的groupId和version跟随父工程就好 -->
+    <artifactId>asuka-controller</artifactId>
+    <packaging>war</packaging>
+
+    <name>asuka-controller Maven Webapp</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- 依赖asuka-dao工程，父类进行了管理，所以不用指定版本号了 -->
+        <dependency>
+            <groupId>com.asuka</groupId>
+            <artifactId>asuka-dao</artifactId>
+        </dependency>
+
+        <!-- 因为在父工程中统一管理了版本号，这里就不用指定版本号了 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 在父工程中进行了统一配置，这里只需要通过坐标引用下父类配置就好了 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
